@@ -55,4 +55,11 @@ export class HeroesService {
 
 
 
+    getHeroes() {
+        return this.http.get(this.heroes)
+            .map(res => res.json());
+    }
+
+
+
 }
