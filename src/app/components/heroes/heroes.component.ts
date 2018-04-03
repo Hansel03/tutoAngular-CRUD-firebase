@@ -11,6 +11,7 @@ import { HeroesService } from './../../services/heroes.service';
 export class HeroesComponent implements OnInit {
 
     heroes: any[];
+    loading = true;
 
     constructor(private _heroesService: HeroesService) {
 
@@ -18,7 +19,7 @@ export class HeroesComponent implements OnInit {
             .subscribe(data => {
                 console.log(data);
                 this.heroes = data;
-
+                this.loading = false;
             });
     }
 
