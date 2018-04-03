@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Heroe } from './../../interfaces/heroe.interfaces';
 
 @Component({
-  selector: 'app-heroe',
-  templateUrl: './heroe.component.html',
-  styles: []
+    selector: 'app-heroe',
+    templateUrl: './heroe.component.html',
+    styles: []
 })
 export class HeroeComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
-  }
+    heroe: Heroe = {
+        nombre: '',
+        bio: '',
+        casa: 'Marvel'
+    };
+
+    constructor() { }
+
+    ngOnInit() {
+    }
+
+
+    guardar() {
+        console.log(this.heroe);
+    }
 
 }
