@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Heroe } from './../../interfaces/heroe.interfaces';
+import { HeroesService } from './../../services/heroes.service';
 
 @Component({
     selector: 'app-heroe',
@@ -16,7 +18,10 @@ export class HeroeComponent implements OnInit {
         casa: 'Marvel'
     };
 
-    constructor() { }
+    constructor(
+        private _heroesService: HeroesService,
+        private router: Router
+    ) { }
 
     ngOnInit() {
     }
@@ -24,6 +29,12 @@ export class HeroeComponent implements OnInit {
 
     guardar() {
         console.log(this.heroe);
+        /*El necesario subscribirse al servicio para llegar al REST */
+        this._heroesService.nuevoHeroe(this.heroe)
+            .subscribe(data => {
+                this.router.navigate(['/heroe', data.name]);
+            },
+                error => console.error(error));
     }
 
 }
