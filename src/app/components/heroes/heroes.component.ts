@@ -28,4 +28,18 @@ export class HeroesComponent implements OnInit {
 
 
 
+    borrarHeroe(key$: string) {
+        this._heroesService.deleteHeroe(key$)
+            .subscribe(data => {
+                console.log(data);
+                if (data.status === 200) {
+                    /*Eliminamos un atributo del objeto */
+                    delete this.heroes[key$];
+                }
+            });
+    }
+
+
+
+
 }
